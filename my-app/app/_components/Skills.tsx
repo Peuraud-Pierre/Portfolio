@@ -6,7 +6,7 @@ export const Skills = () => {
     <Section classname="flex flex-col items-start gap-4">
       <Badge variant={"outline"}>Skills</Badge>
       <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        I Love working on ...
+        J'aime travailler sur :
       </h2>
       <div className="flex flex-col gap-6">
         <div>
@@ -70,6 +70,29 @@ export const Skills = () => {
             à l’expérience utilisateur et à la qualité du code, je mets un point d’honneur à
             respecter les bonnes pratiques du framework. Mon approche structurée assure une
             navigation fluide et une intégration optimale côté front-end.
+          </p>
+        </div>{" "}
+        <div>
+          <div className="flex flex-col gap-2 flex-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 105" width="40" height="32.0">
+              <path
+                d="M64.004 25.602c-17.067 0-27.73 8.53-32 25.597 6.398-8.531 13.867-11.73 22.398-9.597 4.871 1.214 8.352 4.746 12.207 8.66C72.883 56.629 80.145 64 96.004 64c17.066 0 27.73-8.531 32-25.602-6.399 8.536-13.867 11.735-22.399 9.602-4.87-1.215-8.347-4.746-12.207-8.66-6.27-6.367-13.53-13.738-29.394-13.738zM32.004 64c-17.066 0-27.73 8.531-32 25.602C6.402 81.066 13.87 77.867 22.402 80c4.871 1.215 8.352 4.746 12.207 8.66 6.274 6.367 13.536 13.738 29.395 13.738 17.066 0 27.73-8.53 32-25.597-6.399 8.531-13.867 11.73-22.399 9.597-4.87-1.214-8.347-4.746-12.207-8.66C55.128 71.371 47.868 64 32.004 64zm0 0"
+                fill="rgb(170, 170, 192)"
+              />
+            </svg>
+          </div>
+          <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Vue js</h3>
+          <p className="text-sm text-muted-foreground">
+            Développeur passionné par les design systems, je m’investis activement dans
+            l’utilisation de Tailwind CSS pour sa philosophie minimaliste et son efficacité dans la
+            création d’interfaces modernes. J’intègre cet outil avec enthousiasme dans mes projets
+            afin de concevoir des interfaces cohérentes, élégantes et adaptatives. Grâce à son
+            approche utilitaire, je développe rapidement des composants UI réutilisables tout en
+            maintenant un code clair, lisible et maintenable. Je suis attentif aux évolutions de
+            l’écosystème Tailwind (plugins, conventions, bonnes pratiques) et j’exploite ses
+            fonctionnalités avancées pour personnaliser chaque design. Tailwind me permet d’offrir
+            une expérience utilisateur fluide, performante et accessible, en respectant les
+            standards actuels du web et les attentes des utilisateurs.
           </p>
         </div>{" "}
       </div>
