@@ -5,7 +5,7 @@ import { ContactCard } from "./Contact";
 export const Contact = () => {
   return (
     <Section classname="flex flex-col items-start gap-4">
-      <Badge variant={"outline"}>Contacte me </Badge>
+      <Badge variant={"outline"}>Contactez moi </Badge>
       <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
         Vous pouvez me contactez à tout instant via:
       </h2>

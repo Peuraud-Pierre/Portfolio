@@ -19,7 +19,7 @@ export const Hero = () => {
     <Section classname="flex max-lg:flex-col items-start gap-4">
       <div className="flex-[3] w-full flex flex-col gap-2">
         <h2 className="font-caption text-5xl">Peuraud Pierre</h2>
-        <h3 className="text-3xl font-caption">Software developer and creator</h3>
+        <h3 className="text-3xl font-caption">Software developer et createur</h3>
         <p>
           Bienvenue sur mon portfolio ! Je suis un passionné de création de contenu et un
           développeur actif sur{" "}

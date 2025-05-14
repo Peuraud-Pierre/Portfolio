@@ -9,7 +9,7 @@ export const Status = () => {
     <Section classname="flex max-lg:flex-col items-start gap-4 ">
       <div className="flex-[3] w-full">
         <Card className="w-full p-4 flex flex-col gap-10 w-full">
-          <p className=" text-lg text-sm text-muted-foreground">Side fun project</p>
+          <p className=" text-lg text-sm text-muted-foreground">Projet personnel</p>
           <div className="flex flex-col gap-9">
             {SIDE_PROJECTS.map((project, index) => (
               <SideProject
@@ -26,7 +26,7 @@ export const Status = () => {
       <div className="flex-[2] flex flex-col gap-5 w-full">
         <Card className="flex-[2] flex flex-col gap-3 w-full p-4">
           {" "}
-          <p className=" text-lg text-sm text-muted-foreground">Work</p>
+          <p className=" text-lg text-sm text-muted-foreground">Travail</p>
           <div className="flex flex-col gap-4">
             {Work.map((work, index) => (
               <WorkProject key={index} {...work} />
