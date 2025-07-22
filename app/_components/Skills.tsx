@@ -6,7 +6,7 @@ export const Skills = () => {
     <Section classname="flex flex-col items-start gap-4">
       <Badge variant={"outline"}>Skills</Badge>
       <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        J'aime travailler sur :
+        <p>J&apos;aime le code.</p>
       </h2>
       <div className="flex flex-col gap-6">
         <div>

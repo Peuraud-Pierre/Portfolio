@@ -1,6 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
-
-export const Zone01incons = (_: ComponentPropsWithoutRef<"svg"> & { size?: number }) => {
+export const Zone01incons = () => {
   return (
     <svg
       version="1.0"
