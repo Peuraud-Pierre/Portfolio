@@ -4,7 +4,7 @@ export const SITE = {
   brand: "PIERRE",
   name: "Peuraud Pierre",
   role: "Développeur Full-Stack",
-  tagline: "Développeur Full-Stack & étudiant à Zone01 — je construis des applications rapides, robustes et soignées.",
+  tagline: "Développeur Full-Stack diplômé de Zone01 — je construis des applications rapides, robustes et soignées.",
   email: "peuraudpierre9@gmail.com",
   phone: "06 67 84 54 01",
   phoneHref: "tel:+33667845401",
@@ -33,7 +33,8 @@ export const ABOUT = {
   titleTop: "Je transforme les idées",
   titleBottom: "en réalité digitale.",
   paragraphs: [
-    "Je suis développeur, actuellement en formation chez Zone01 Rouen Normandie. J'aime concevoir des applications complètes, du back-end au front-end, en alliant code propre, performances et interfaces soignées.",
+    "Je suis développeur Full-Stack, titulaire d'une licence obtenue à Zone01 Rouen Normandie. J'aime concevoir des applications complètes, du back-end au front-end, en alliant code propre, performances et interfaces soignées.",
+    "Pendant un an d'alternance chez Eurekafripe, j'ai occupé le poste de Lead Developer pour l'ouverture de leur pôle tech : poser les bases techniques, choisir les outils et mener les premiers projets de A à Z.",
     "En dehors des projets de l'école, j'explore de nouvelles technologies, je teste de nouveaux outils et je construis des projets qui me poussent à progresser. Je suis toujours ouvert aux collaborations, aux nouveaux défis et aux opportunités de créer quelque chose qui compte.",
   ],
   tools: [

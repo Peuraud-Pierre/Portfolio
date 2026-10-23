@@ -15,7 +15,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Peuraud Pierre — Développeur Full-Stack",
   description:
-    "Portfolio de Peuraud Pierre, développeur Full-Stack et étudiant à Zone01 Rouen Normandie.",
+    "Portfolio de Peuraud Pierre, développeur Full-Stack diplômé de Zone01 Rouen Normandie, ex-Lead Developer chez Eurekafripe.",
 };
 
 export default function RootLayout({

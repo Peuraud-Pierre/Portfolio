@@ -61,7 +61,7 @@ export const SiteFooter = () => {
         </div>
 
         <div className="mt-16 flex flex-col justify-between gap-3 border-t border-white/10 pt-8 text-xs text-slate-500 sm:flex-row">
-          <p>{SITE.role} • Étudiant à Zone01 Rouen Normandie</p>
+          <p>{SITE.role} • Diplômé de Zone01 Rouen Normandie</p>
           <p className="flex items-center gap-2 text-slate-400">
             <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
             Ouvert aux opportunités
