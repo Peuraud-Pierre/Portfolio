@@ -65,7 +65,7 @@ const drawFallback = (ctx: CanvasRenderingContext2D, w: number, h: number) => {
 };
 
 export const ParticleCanvas = ({
-  src = "/hero-subject.png",
+  src = `${process.env.NEXT_PUBLIC_BASE_PATH}/hero-subject.png`,
   maxParticles = 32000,
   mouseRadius = 95,
   repelForce = 26,
