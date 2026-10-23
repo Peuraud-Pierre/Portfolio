@@ -84,6 +84,16 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           {project.title}
         </h3>
         <p className="mt-6 font-sans text-[15px] leading-relaxed text-neutral-300">{project.description}</p>
+        {project.features && (
+          <ul className="mt-5 flex flex-col gap-2 font-sans text-sm leading-relaxed text-neutral-300">
+            {project.features.map((feature) => (
+              <li key={feature} className="flex gap-2.5">
+                <span className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-pinkish" />
+                {feature}
+              </li>
+            ))}
+          </ul>
+        )}
         <ul className="mt-8 flex flex-wrap gap-2.5">
           {project.tags.map((tag) => (
             <li
@@ -132,6 +142,49 @@ const Preview = ({ project }: { project: Project }) => {
   const { kind, lines } = project.preview;
 
   if (kind === "vinyl") return <VinylPreview caption={lines} />;
+
+  // Tableau de bord : menu des modules à gauche, indicateurs et graphique à droite
+  if (kind === "console") {
+    return (
+      <div className="flex h-full">
+        <div className="flex w-[26%] flex-col gap-1.5 border-r border-white/10 p-3">
+          <span className="mb-1 font-display text-[10px] font-extrabold uppercase tracking-wider text-white sm:text-xs">
+            La Console
+          </span>
+          {lines.map((l, i) => (
+            <span
+              key={l}
+              className={cn(
+                "rounded px-1.5 py-0.5 font-pop text-[8px] sm:text-[10px]",
+                i === 0 ? "bg-pinkish/20 text-pinkish" : "text-neutral-400"
+              )}
+            >
+              {l}
+            </span>
+          ))}
+        </div>
+        <div className="flex flex-1 flex-col gap-2.5 p-3">
+          <div className="grid grid-cols-3 gap-2">
+            {["Clients", "Devis", "Conteneurs"].map((k, i) => (
+              <div key={k} className="rounded-md border border-white/10 bg-white/5 p-2">
+                <span className="block font-pop text-[7px] uppercase text-neutral-500 sm:text-[9px]">{k}</span>
+                <span className="font-display text-xs font-bold text-white sm:text-base">{[248, 37, 12][i]}</span>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-1 items-end gap-1.5 rounded-md border border-white/10 bg-white/[0.03] p-2">
+            {[40, 65, 50, 80, 60, 90, 70, 85, 55, 75].map((h, i) => (
+              <div
+                key={i}
+                className="flex-1 rounded-sm bg-gradient-to-t from-pink-300/40 to-teal-300/40"
+                style={{ height: `${h}%` }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (kind === "web") {
     return (

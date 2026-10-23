@@ -82,13 +82,32 @@ export type Project = {
   url: string;
   // Capture d'écran optionnelle (ex: "/projects/social.png"), sinon un aperçu stylisé est généré.
   image?: string;
-  preview: { kind: "terminal" | "web" | "code" | "vinyl"; lines: string[] };
+  preview: { kind: "terminal" | "web" | "code" | "vinyl" | "console"; lines: string[] };
+  // Liste optionnelle des fonctionnalités clés, affichée sous la description
+  features?: string[];
   // Projet mis en avant : badge "Projet phare" et lien de téléchargement
   featured?: boolean;
   downloadUrl?: string;
 };
 
 export const PROJECTS: Project[] = [
+  {
+    title: "La Console — CRM",
+    description:
+      "La console interne tout-en-un d'une entreprise de négoce et de tri de vêtements de seconde main : un seul outil partagé et en temps réel qui remplace tableurs Excel, e-mails et notes éparses, des commerciaux sur le terrain jusqu'à la direction. PWA installable, pensée mobile d'abord, thèmes clair et sombre.",
+    features: [
+      "CRM : clients, pipeline Kanban, leads, tâches, devis PDF et analytics de vente",
+      "Calendrier des RDV synchronisé avec Outlook et Apple, tournées sur carte",
+      "Stock, arrivages de conteneurs, salle de tri, handpick et commandes",
+      "Messagerie chiffrée de bout en bout, notifications push",
+      "Drive, wiki, tickets, projets et sprints, annonces",
+      "Rôles et permissions, authentification MFA, console d'erreurs",
+      "Imports et exports Excel, scan de QR codes",
+    ],
+    tags: ["REACT", "TYPESCRIPT", "SUPABASE", "TANSTACK QUERY", "TAILWIND CSS", "PWA"],
+    url: "https://github.com/Peuraud-Pierre/Crm",
+    preview: { kind: "console", lines: ["CRM", "Stock", "Arrivages", "Messages", "Drive", "Wiki", "Tickets"] },
+  },
   {
     title: "Vinyl",
     description:
