@@ -120,6 +120,17 @@
   }
 }
 
+/* Apparition du hero, en CSS pour ne pas dépendre du chargement du JS */
+.hero-rise {
+  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+}
+
 /* Pastille "verre" utilisée par le header */
 .glass-pill {
   background: rgba(0, 0, 0, 0.45);
@@ -190,7 +201,8 @@
     animation: none;
   }
 
-  .text-shine {
+  .text-shine,
+  .hero-rise {
     animation: none;
   }
   .text-shine {

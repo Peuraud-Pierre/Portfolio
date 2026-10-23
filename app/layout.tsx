@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-import { Josefin_Sans, Poppins } from "next/font/google";
+import { Geist_Mono, Josefin_Sans, Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 
+// Police mono : seulement dans les aperçus de code, inutile de la précharger
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", preload: false });
 const josefin = Josefin_Sans({ subsets: ["latin"], variable: "--font-josefin" });
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-poppins",
 });
 
@@ -26,6 +27,8 @@ export default function RootLayout({
   return (
     <html lang="fr" className="dark scroll-smooth">
       <head>
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
         {/* Cabinet Grotesk (Fontshare, licence gratuite) pour les gros titres */}
         <link
           rel="stylesheet"
@@ -35,7 +38,7 @@ export default function RootLayout({
       <body
         className={cn(
           GeistSans.variable,
-          GeistMono.variable,
+          geistMono.variable,
           josefin.variable,
           poppins.variable,
           "font-sans bg-black text-slate-100 antialiased overflow-x-hidden selection:bg-pink-300/30 selection:text-pink-100"

@@ -98,6 +98,8 @@ export const MarqueeSection = () => {
               <img
                 src={`https://cdn.akamai.steamstatic.com/steam/apps/${item.steamId}/capsule_616x353.jpg`}
                 alt={item.title}
+                loading="lazy"
+                decoding="async"
                 className="pointer-events-none h-full w-full object-cover grayscale transition duration-500 hover:grayscale-0"
               />
             </a>

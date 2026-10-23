@@ -90,6 +90,8 @@ export const ParticleCanvas = ({
     let buffer: ImageData | null = null;
     let pixels: Uint32Array | null = null;
     const mouse = { x: -9999, y: -9999, tx: -9999, ty: -9999 };
+    // Vrai quand les points sont tous revenus en place : on arrête alors de redessiner
+    let settled = false;
 
     const sample = () => {
       const off = document.createElement("canvas");
@@ -121,8 +123,10 @@ export const ParticleCanvas = ({
 
       let count = 0;
       for (let i = 0; i < data.length; i += 4) if (visible(i)) count++;
-      // Au moins 4 px entre deux points pour garder l'effet "trame de points"
-      const step = Math.max(4, Math.floor(Math.sqrt(count / maxParticles)));
+      // Au moins 4 px entre deux points pour garder l'effet "trame de points" ; moitié moins
+      // de points sur mobile, où le processeur est plus lent
+      const limit = width < 768 ? maxParticles / 2 : maxParticles;
+      const step = Math.max(4, Math.floor(Math.sqrt(count / limit)));
 
       const next: Particle[] = [];
       for (let y = 0; y < height; y += step) {
@@ -133,6 +137,7 @@ export const ParticleCanvas = ({
         }
       }
       particles = next;
+      settled = false;
     };
 
     const resize = () => {
@@ -145,12 +150,13 @@ export const ParticleCanvas = ({
 
     const tick = () => {
       frame = requestAnimationFrame(tick);
-      if (!buffer || !pixels || window.scrollY > height * 1.05) return;
+      if (settled || !buffer || !pixels || window.scrollY > height * 1.05) return;
 
       mouse.x += (mouse.tx - mouse.x) * 0.32;
       mouse.y += (mouse.ty - mouse.y) * 0.32;
       const r2 = mouseRadius * mouseRadius;
       pixels.fill(0);
+      let moving = Math.abs(mouse.tx - mouse.x) > 0.5 || Math.abs(mouse.ty - mouse.y) > 0.5;
 
       for (const p of particles) {
         const dx = p.x - mouse.x;
@@ -166,6 +172,7 @@ export const ParticleCanvas = ({
         p.vy = (p.vy + (p.oy - p.y) * returnSpeed) * damping;
         p.x += p.vx;
         p.y += p.vy;
+        if (!moving && (Math.abs(p.vx) > 0.01 || Math.abs(p.vy) > 0.01 || d2 < r2)) moving = true;
 
         const px = p.x | 0;
         const py = p.y | 0;
@@ -174,15 +181,18 @@ export const ParticleCanvas = ({
         pixels[idx] = pixels[idx + 1] = pixels[idx + width] = pixels[idx + width + 1] = p.color;
       }
       ctx.putImageData(buffer, 0, 0);
+      settled = !moving;
     };
 
     const onMove = (e: PointerEvent) => {
       const rect = canvas.getBoundingClientRect();
       mouse.tx = e.clientX - rect.left;
       mouse.ty = e.clientY - rect.top;
+      settled = false;
     };
     const onLeave = () => {
       mouse.tx = mouse.ty = -9999;
+      settled = false;
     };
 
     const start = () => {
