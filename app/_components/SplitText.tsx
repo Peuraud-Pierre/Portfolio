@@ -19,7 +19,7 @@ export const SplitText = ({ text, as = "h2", className, stagger = 0.025 }: Props
       aria-label={text}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.1, margin: "-50px" }}
+      viewport={{ once: true, amount: 0 }}
       transition={{ staggerChildren: stagger }}
     >
       {text.split(" ").map((word, w) => (

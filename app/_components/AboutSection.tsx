@@ -16,12 +16,12 @@ const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayout
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="relative overflow-hidden py-28 sm:py-36">
+    <section id="about" className="relative overflow-hidden py-20 sm:py-36">
       <div className="dot-grid pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute -right-40 top-1/3 h-[520px] w-[520px] rounded-full bg-pinkish/10 blur-[140px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 sm:px-12 lg:px-20">
-        <div className="mb-14 flex flex-col items-start font-sub sm:mb-20">
+        <div className="mb-10 flex flex-col items-start font-sub sm:mb-20">
           <SplitText
             text={ABOUT.titleTop}
             className="text-4xl font-bold uppercase leading-[1.08] tracking-tight text-neutral-400 sm:text-6xl lg:text-7xl"
@@ -39,7 +39,7 @@ export const AboutSection = () => {
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
               >
                 {p}
@@ -106,8 +106,8 @@ const ToolsTree = () => {
               strokeWidth={1.5}
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
-              viewport={{ once: false }}
-              transition={{ duration: 1, delay: 0.3 + i * 0.15, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.1 + i * 0.1, ease: "easeInOut" }}
             />
             <circle cx={p.end.x} cy={p.end.y} r={4} fill="white" />
           </g>
@@ -132,9 +132,9 @@ const ToolsTree = () => {
               }}
               initial={{ opacity: 0, y: 30, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: false, amount: 0.5 }}
+              viewport={{ once: true, amount: 0.15 }}
               onAnimationComplete={compute}
-              transition={{ duration: 0.7, delay: 0.4 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className={cn(
                 "w-full max-w-sm rounded-2xl border border-white/10 bg-gradient-to-br from-[#2a2228]/90 via-[#16141a]/90 to-[#1a1418]/90 p-6 shadow-2xl backdrop-blur-md",
                 CARD_OFFSETS[i]

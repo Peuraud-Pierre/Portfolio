@@ -11,9 +11,9 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="px-4 py-28 sm:px-8">
+    <section id="projects" className="px-4 py-16 sm:px-8 sm:py-28">
       <SectionTitle title={PROJECTS_INTRO.title} subtitle={PROJECTS_INTRO.subtitle} />
-      <div className="mx-auto mt-20 flex max-w-[1120px] flex-col gap-14">
+      <div className="mx-auto mt-12 flex max-w-[1120px] flex-col gap-10 sm:mt-20 sm:gap-14">
         {PROJECTS.map((project, i) => (
           <ProjectCard key={project.title} project={project} index={i} />
         ))}
@@ -29,7 +29,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
     <motion.article
       initial={{ opacity: 0, y: 70 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.08 }}
+      viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.8, ease: EASE }}
       className={cn(
         "project-card relative grid grid-cols-1 items-center gap-10 rounded-3xl border border-white/10 p-5 sm:rounded-[2rem] sm:p-10 lg:min-h-[530px] lg:grid-cols-2 lg:gap-14 lg:p-14",
@@ -45,7 +45,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       <motion.div
         initial={{ opacity: 0, x: reversed ? 45 : -45 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
         className={cn("flex min-w-0 flex-col", reversed && "lg:order-2")}
       >
@@ -109,7 +109,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       <motion.a
         initial={{ opacity: 0, scale: 0.9, y: 30 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
         href={project.url}
         target="_blank"

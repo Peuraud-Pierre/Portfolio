@@ -19,10 +19,10 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="px-4 py-28 sm:px-8">
+    <section id="contact" className="px-4 py-16 sm:px-8 sm:py-28">
       <SectionTitle title={CONTACT_INTRO.title} subtitle={CONTACT_INTRO.subtitle} />
 
-      <div className="mx-auto mt-20 grid max-w-[1056px] overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0a] md:grid-cols-[2fr_1fr]">
+      <div className="mx-auto mt-12 grid max-w-[1056px] sm:mt-20 overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0a] md:grid-cols-[2fr_1fr]">
         <div className="p-6 sm:p-8">
           <h3 className="text-4xl font-medium tracking-tight text-white sm:text-5xl">{CONTACT_INTRO.cardTitle}</h3>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-neutral-400">{CONTACT_INTRO.cardText}</p>

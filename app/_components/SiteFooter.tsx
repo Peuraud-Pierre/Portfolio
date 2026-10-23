@@ -8,8 +8,8 @@ const linkClass = "flex items-center gap-2 text-sm text-slate-300 transition-col
 
 export const SiteFooter = () => {
   return (
-    <footer className="px-4 pb-10 pt-20 sm:px-20">
-      <div className="mx-auto max-w-[1280px] rounded-t-[2.5rem] border-t border-white/10 bg-[radial-gradient(50%_80px_at_50%_0%,rgba(255,255,255,0.06),transparent)] px-2 pt-20 sm:px-6">
+    <footer className="px-4 pb-10 pt-10 sm:px-20 sm:pt-20">
+      <div className="mx-auto max-w-[1280px] rounded-t-[2.5rem] border-t border-white/10 bg-[radial-gradient(50%_80px_at_50%_0%,rgba(255,255,255,0.06),transparent)] px-2 pt-14 sm:px-6 sm:pt-20">
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
           <div className="col-span-2 md:col-span-1">
             <p className="font-display text-3xl font-extrabold tracking-tight text-white">{SITE.brand}</p>

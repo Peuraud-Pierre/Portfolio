@@ -78,7 +78,7 @@ export const MarqueeSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative select-none overflow-hidden py-24 sm:py-32">
+    <section ref={sectionRef} className="relative select-none overflow-hidden py-12 sm:py-32">
       <div className="relative py-4">
         {/* Fondus sur les bords, limités au bandeau pour ne pas masquer la légende */}
         <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-black via-black/90 to-transparent sm:w-52" />
@@ -106,7 +106,7 @@ export const MarqueeSection = () => {
           ))}
         </div>
       </div>
-      <p className="mt-12 px-4 text-center font-sub text-xs font-bold uppercase tracking-[0.22em] text-bone sm:text-sm">
+      <p className="mt-8 px-4 sm:mt-12 text-center font-sub text-xs font-bold uppercase tracking-[0.22em] text-bone sm:text-sm">
         {MARQUEE.caption}
       </p>
     </section>

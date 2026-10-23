@@ -7,7 +7,7 @@ export const SectionTitle = ({ title, subtitle }: { title: string; subtitle: str
       className="font-display text-5xl font-extrabold uppercase leading-none tracking-[-0.03em] text-bone sm:text-6xl lg:text-7xl"
       stagger={0.02}
     />
-    <p className="mt-10 max-w-2xl font-sub text-xs font-bold uppercase leading-relaxed tracking-[0.3em] text-neutral-300 sm:text-sm">
+    <p className="mt-6 max-w-2xl sm:mt-10 font-sub text-xs font-bold uppercase leading-relaxed tracking-[0.3em] text-neutral-300 sm:text-sm">
       {subtitle}
     </p>
   </div>
