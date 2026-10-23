@@ -11,16 +11,16 @@ export const HeroSection = () => {
   return (
     <section id="home" className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-black">
       <ParticleCanvas />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/70 via-black/10 to-transparent md:hidden" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-black/10 to-transparent md:hidden" />
 
-      <div className="pointer-events-none relative z-10 flex h-full items-center px-6 sm:px-12">
+      <div className="pointer-events-none relative z-10 flex h-full items-center px-6 portrait:items-start portrait:pt-[20svh] sm:px-12">
         <div className="inline-flex flex-col">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
           >
-            <h1 className="text-shine font-display text-7xl font-bold leading-[0.85] tracking-[-0.04em] sm:text-8xl md:text-[9.5rem] lg:text-[11.5rem] xl:text-[13.5rem]">
+            <h1 className="text-shine font-display text-[22vw] font-bold leading-[0.85] tracking-[-0.04em] sm:text-8xl md:text-[9.5rem] lg:text-[11.5rem] xl:text-[13.5rem]">
               {HERO.headline}
             </h1>
             <p className="mt-2 translate-x-2 font-pop text-[0.64rem] uppercase leading-none tracking-[0.18em] text-white sm:translate-x-5 sm:text-sm lg:text-[0.95rem]">

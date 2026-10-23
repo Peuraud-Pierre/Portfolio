@@ -79,10 +79,11 @@ export const MarqueeSection = () => {
 
   return (
     <section ref={sectionRef} className="relative select-none overflow-hidden py-24 sm:py-32">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-28 bg-gradient-to-r from-black via-black/90 to-transparent sm:w-52" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-28 bg-gradient-to-l from-black via-black/90 to-transparent sm:w-52" />
-      <div className="py-4">
-        <div ref={trackRef} className="flex w-max transform-gpu items-center gap-6 px-8 will-change-transform sm:gap-8 sm:px-16">
+      <div className="relative py-4">
+        {/* Fondus sur les bords, limités au bandeau pour ne pas masquer la légende */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-black via-black/90 to-transparent sm:w-52" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-black via-black/90 to-transparent sm:w-52" />
+        <div ref={trackRef} className="flex w-max transform-gpu items-center gap-4 px-6 will-change-transform sm:gap-8 sm:px-16">
           {items.map((item, i) => (
             <a
               key={`${item.steamId}-${i}`}
@@ -91,7 +92,7 @@ export const MarqueeSection = () => {
               rel="noopener noreferrer"
               aria-hidden={i >= MARQUEE.items.length}
               tabIndex={i >= MARQUEE.items.length ? -1 : undefined}
-              className="relative aspect-[16/10] w-64 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-[#161616] shadow-xl transition-colors duration-300 hover:border-white/30 sm:w-72 md:w-80"
+              className="relative aspect-[16/10] w-56 flex-shrink-0 overflow-hidden rounded-xl border border-white/10 bg-[#161616] shadow-xl sm:rounded-2xl transition-colors duration-300 hover:border-white/30 sm:w-72 md:w-80"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

@@ -29,15 +29,15 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
     <motion.article
       initial={{ opacity: 0, y: 70 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: false, amount: 0.08 }}
       transition={{ duration: 0.8, ease: EASE }}
       className={cn(
-        "project-card relative grid grid-cols-1 items-center gap-10 rounded-[2rem] border border-white/10 p-6 sm:p-10 md:grid-cols-2 md:gap-14 md:p-14 lg:min-h-[530px]",
+        "project-card relative grid grid-cols-1 items-center gap-10 rounded-3xl border border-white/10 p-5 sm:rounded-[2rem] sm:p-10 lg:min-h-[530px] lg:grid-cols-2 lg:gap-14 lg:p-14",
         project.featured && "border-pinkish/40 shadow-[0_0_80px_-20px_rgba(255,182,193,0.35)] lg:min-h-[600px]"
       )}
     >
       {project.featured && (
-        <span className="absolute -top-3.5 left-6 inline-flex items-center gap-1.5 rounded-full border border-pinkish/50 bg-black px-3.5 py-1.5 font-pop text-[11px] font-medium uppercase tracking-[0.18em] text-pinkish sm:left-14">
+        <span className="absolute -top-3.5 left-5 inline-flex items-center gap-1.5 rounded-full border border-pinkish/50 bg-black px-3.5 py-1.5 font-pop text-[11px] font-medium uppercase tracking-[0.18em] text-pinkish sm:left-14">
           <Star className="h-3 w-3 fill-pinkish" />
           Projet phare
         </span>
@@ -47,7 +47,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: false, amount: 0.2 }}
         transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-        className={cn("flex min-w-0 flex-col", reversed && "md:order-2")}
+        className={cn("flex min-w-0 flex-col", reversed && "lg:order-2")}
       >
         <div className="mb-5 flex flex-wrap items-center justify-between gap-x-2.5 gap-y-3">
           <a
@@ -77,7 +77,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         </div>
         <h3
           className={cn(
-            "font-sub text-4xl font-bold leading-tight text-white sm:text-5xl",
+            "font-sub text-[2rem] font-bold leading-tight text-white sm:text-5xl",
             project.featured && "bg-gradient-to-r from-white via-[#ffe4ec] to-pinkish bg-clip-text text-transparent sm:text-6xl"
           )}
         >
@@ -116,7 +116,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         rel="noopener noreferrer"
         className={cn(
           "group block min-w-0 rounded-2xl border border-white/20 bg-[#1a1a1c] p-3 shadow-2xl",
-          reversed && "md:order-1"
+          reversed && "lg:order-1"
         )}
       >
         <div className="flex gap-1.5 rounded-t-xl bg-[#252527] px-3 py-2.5">

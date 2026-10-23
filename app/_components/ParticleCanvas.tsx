@@ -22,9 +22,11 @@ const pack = (r: number, g: number, b: number) =>
 // Visuel de secours : une planète éclairée avec un anneau, placée à droite comme le sujet
 // du site d'origine. Les zones sombres disparaissent au moment de l'échantillonnage.
 const drawFallback = (ctx: CanvasRenderingContext2D, w: number, h: number) => {
-  const r = Math.min(w * 0.2, h * 0.33);
-  const cx = w > 768 ? w * 0.66 : w * 0.6;
-  const cy = h * 0.5;
+  // En portrait (mobile, tablette), le sujet passe sous le titre au lieu d'être à sa droite
+  const portrait = h > w;
+  const r = portrait ? Math.min(w * 0.24, h * 0.13) : Math.min(w * 0.2, h * 0.33);
+  const cx = portrait ? w * 0.5 : w > 768 ? w * 0.66 : w * 0.6;
+  const cy = portrait ? h * 0.72 : h * 0.5;
 
   const ring = (front: boolean) => {
     ctx.save();
@@ -97,10 +99,18 @@ export const ParticleCanvas = ({
       if (!octx) return;
 
       if (image) {
-        const ratio = Math.min((width * 0.84) / image.width, (height * 0.84) / image.height);
-        const dw = image.width * ratio;
-        const dh = image.height * ratio;
-        octx.drawImage(image, (width - dw) / 2 + (width > 1024 ? 90 : 40), (height - dh) / 2, dw, dh);
+        if (height > width) {
+          // Portrait : l'image occupe la moitié basse, sous le titre
+          const ratio = Math.min((width * 0.95) / image.width, (height * 0.5) / image.height);
+          const dw = image.width * ratio;
+          const dh = image.height * ratio;
+          octx.drawImage(image, (width - dw) / 2, height * 0.47 + (height * 0.5 - dh) / 2, dw, dh);
+        } else {
+          const ratio = Math.min((width * 0.84) / image.width, (height * 0.84) / image.height);
+          const dw = image.width * ratio;
+          const dh = image.height * ratio;
+          octx.drawImage(image, (width - dw) / 2 + (width > 1024 ? 90 : 40), (height - dh) / 2, dw, dh);
+        }
       } else {
         drawFallback(octx, width, height);
       }

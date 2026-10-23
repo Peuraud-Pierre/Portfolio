@@ -23,7 +23,7 @@ export const ContactSection = () => {
       <SectionTitle title={CONTACT_INTRO.title} subtitle={CONTACT_INTRO.subtitle} />
 
       <div className="mx-auto mt-20 grid max-w-[1056px] overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0a] md:grid-cols-[2fr_1fr]">
-        <div className="p-8">
+        <div className="p-6 sm:p-8">
           <h3 className="text-4xl font-medium tracking-tight text-white sm:text-5xl">{CONTACT_INTRO.cardTitle}</h3>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-neutral-400">{CONTACT_INTRO.cardText}</p>
           <div className="mt-8 grid gap-8 sm:grid-cols-2">
@@ -33,7 +33,7 @@ export const ContactSection = () => {
           </div>
         </div>
 
-        <form onSubmit={onSubmit} className="flex flex-col gap-4 border-t border-white/10 p-5 md:border-l md:border-t-0">
+        <form onSubmit={onSubmit} className="flex flex-col gap-4 border-t border-white/10 p-6 md:border-l md:p-5 md:border-t-0">
           <Field label="Nom">
             <input name="name" required placeholder="Ton nom" className={inputClass} />
           </Field>
@@ -68,10 +68,10 @@ const Field = ({ label, children }: { label: string; children: React.ReactNode }
 const Info = ({ icon, label, value, href }: { icon: React.ReactNode; label: string; value: string; href?: string }) => (
   <div className="flex items-start gap-3">
     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-white/5 text-white">{icon}</span>
-    <div>
+    <div className="min-w-0">
       <p className="text-white">{label}</p>
       {href ? (
-        <a href={href} className="text-xs text-neutral-400 hover:text-pinkish">
+        <a href={href} className="break-all text-xs text-neutral-400 hover:text-pinkish">
           {value}
         </a>
       ) : (
