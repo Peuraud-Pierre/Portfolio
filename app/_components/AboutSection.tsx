@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { LayoutTemplate, Server, Wrench } from "lucide-react";
 import { ABOUT } from "../_data/content";
 import { SplitText } from "./SplitText";
@@ -35,15 +34,9 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="space-y-6 font-sub text-lg leading-relaxed text-slate-200 sm:text-xl lg:col-span-6 lg:text-2xl">
             {ABOUT.paragraphs.map((p, i) => (
-              <motion.p
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              >
+              <p key={i} data-reveal="" style={{ "--delay": `${i * 0.15}s` } as React.CSSProperties}>
                 {p}
-              </motion.p>
+              </p>
             ))}
           </div>
 
@@ -96,19 +89,14 @@ const ToolsTree = () => {
 
   return (
     <div ref={containerRef} className="relative lg:col-span-6">
-      <svg className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible lg:block" aria-hidden="true">
+      <svg
+        data-reveal-draw=""
+        className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible lg:block"
+        aria-hidden="true"
+      >
         {paths.map((p, i) => (
-          <g key={i}>
-            <motion.path
-              d={p.d}
-              fill="none"
-              stroke="rgba(255,255,255,0.6)"
-              strokeWidth={1.5}
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.1 + i * 0.1, ease: "easeInOut" }}
-            />
+          <g key={i} style={{ "--i": i } as React.CSSProperties}>
+            <path d={p.d} pathLength={1} fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth={1.5} />
             <circle cx={p.end.x} cy={p.end.y} r={4} fill="white" />
           </g>
         ))}
@@ -125,16 +113,14 @@ const ToolsTree = () => {
         {ABOUT.tools.map((tool, i) => {
           const Icon = ICONS[tool.icon];
           return (
-            <motion.div
+            <div
               key={tool.title}
               ref={(el) => {
                 cardRefs.current[i] = el;
               }}
-              initial={{ opacity: 0, y: 30, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.15 }}
-              onAnimationComplete={compute}
-              transition={{ duration: 0.7, delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              data-reveal=""
+              style={{ "--delay": `${0.1 + i * 0.08}s`, "--from": "translate3d(0, 30px, 0) scale(0.97)" } as React.CSSProperties}
+              onTransitionEnd={compute}
               className={cn(
                 "w-full max-w-sm rounded-2xl border border-white/10 bg-gradient-to-br from-[#2a2228]/90 via-[#16141a]/90 to-[#1a1418]/90 p-6 shadow-2xl backdrop-blur-md",
                 CARD_OFFSETS[i]
@@ -145,7 +131,7 @@ const ToolsTree = () => {
                 {tool.title}
               </h3>
               <p className="font-sub text-sm leading-relaxed text-neutral-300">{tool.items}</p>
-            </motion.div>
+            </div>
           );
         })}
       </div>

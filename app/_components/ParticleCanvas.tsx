@@ -141,6 +141,9 @@ export const ParticleCanvas = ({
     };
 
     const resize = () => {
+      // Sur mobile, la barre d'adresse qui se replie au scroll déclenche "resize" sans changer
+      // la taille du hero (100svh) : on évite alors de tout recalculer
+      if (canvas.clientWidth === width && canvas.clientHeight === height) return;
       width = canvas.width = canvas.clientWidth;
       height = canvas.height = canvas.clientHeight;
       buffer = ctx.createImageData(width, height);
@@ -172,7 +175,7 @@ export const ParticleCanvas = ({
         p.vy = (p.vy + (p.oy - p.y) * returnSpeed) * damping;
         p.x += p.vx;
         p.y += p.vy;
-        if (!moving && (Math.abs(p.vx) > 0.01 || Math.abs(p.vy) > 0.01 || d2 < r2)) moving = true;
+        if (!moving && (Math.abs(p.vx) > 0.01 || Math.abs(p.vy) > 0.01)) moving = true;
 
         const px = p.x | 0;
         const py = p.y | 0;
@@ -194,27 +197,31 @@ export const ParticleCanvas = ({
       mouse.tx = mouse.ty = -9999;
       settled = false;
     };
+    // Au doigt, il n'y a pas de "pointerleave" : on relâche les points à la fin du toucher
+    const onUp = (e: PointerEvent) => e.pointerType !== "mouse" && onLeave();
 
-    const start = () => {
-      resize();
-      frame = requestAnimationFrame(tick);
-    };
-
+    // Le visuel de secours s'affiche tout de suite ; l'image le remplace dès qu'elle est chargée
+    resize();
+    frame = requestAnimationFrame(tick);
     const img = new Image();
     img.onload = () => {
       image = img;
-      start();
+      sample();
     };
-    img.onerror = start;
     img.src = src;
 
     window.addEventListener("resize", resize);
     window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
     document.addEventListener("pointerleave", onLeave);
     return () => {
       cancelAnimationFrame(frame);
+      img.onload = null;
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
       document.removeEventListener("pointerleave", onLeave);
     };
   }, [src, maxParticles, mouseRadius, repelForce, returnSpeed, damping]);

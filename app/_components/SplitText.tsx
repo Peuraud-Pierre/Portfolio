@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { Fragment } from "react";
 
 type Props = {
   text: string;
@@ -10,32 +8,29 @@ type Props = {
   stagger?: number;
 };
 
-// Fait apparaître le texte lettre par lettre quand il entre dans l'écran.
-export const SplitText = ({ text, as = "h2", className, stagger = 0.025 }: Props) => {
-  const Tag = motion[as];
+// Fait apparaître le texte lettre par lettre quand il entre dans l'écran (animation en CSS,
+// déclenchée par le script d'apparition de layout.tsx).
+export const SplitText = ({ text, as: Tag = "h2", className, stagger = 0.025 }: Props) => {
+  let index = 0;
   return (
     <Tag
       className={className}
       aria-label={text}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0 }}
-      transition={{ staggerChildren: stagger }}
+      data-reveal-split=""
+      style={{ "--stagger": `${stagger}s` } as React.CSSProperties}
     >
       {text.split(" ").map((word, w) => (
-        <span key={w} className="inline-block whitespace-nowrap" aria-hidden="true">
-          {word.split("").map((char, c) => (
-            <motion.span
-              key={c}
-              className="inline-block"
-              variants={{ hidden: { opacity: 0, y: 45 }, visible: { opacity: 1, y: 0 } }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {char}
-            </motion.span>
-          ))}
-          {" "}
-        </span>
+        // L'espace est placé hors du mot : en fin de bloc inline-block, il serait supprimé
+        <Fragment key={w}>
+          {w > 0 && " "}
+          <span className="inline-block whitespace-nowrap" aria-hidden="true">
+            {word.split("").map((char, c) => (
+              <span key={c} className="split-char" style={{ "--i": index++ } as React.CSSProperties}>
+                {char}
+              </span>
+            ))}
+          </span>
+        </Fragment>
       ))}
     </Tag>
   );

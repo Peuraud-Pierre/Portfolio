@@ -1,13 +1,8 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Download, ExternalLink, Star } from "lucide-react";
 import { GithubIcon } from "./icons/Githubicon";
 import { PROJECTS, PROJECTS_INTRO, type Project } from "../_data/content";
 import { SectionTitle } from "./SectionTitle";
 import { cn } from "@/lib/utils";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
 
 export const ProjectsSection = () => {
   return (
@@ -26,11 +21,9 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   const reversed = index % 2 === 1;
   const total = String(PROJECTS.length).padStart(2, "0");
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 70 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0 }}
-      transition={{ duration: 0.8, ease: EASE }}
+    <article
+      data-reveal=""
+      style={{ "--from": "translate3d(0, 70px, 0)" } as React.CSSProperties}
       className={cn(
         "project-card relative grid grid-cols-1 items-center gap-10 rounded-3xl border border-white/10 p-5 sm:rounded-[2rem] sm:p-10 lg:min-h-[530px] lg:grid-cols-2 lg:gap-14 lg:p-14",
         project.featured && "border-pinkish/40 shadow-[0_0_80px_-20px_rgba(255,182,193,0.35)] lg:min-h-[600px]"
@@ -42,11 +35,9 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           Projet phare
         </span>
       )}
-      <motion.div
-        initial={{ opacity: 0, x: reversed ? 45 : -45 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+      <div
+        data-reveal=""
+        style={{ "--delay": "0.1s", "--from": `translate3d(${reversed ? 45 : -45}px, 0, 0)` } as React.CSSProperties}
         className={cn("flex min-w-0 flex-col", reversed && "lg:order-2")}
       >
         <div className="mb-5 flex flex-wrap items-center justify-between gap-x-2.5 gap-y-3">
@@ -104,13 +95,11 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             </li>
           ))}
         </ul>
-      </motion.div>
+      </div>
 
-      <motion.a
-        initial={{ opacity: 0, scale: 0.9, y: 30 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
+      <a
+        data-reveal=""
+        style={{ "--delay": "0.15s", "--from": "translate3d(0, 30px, 0) scale(0.9)" } as React.CSSProperties}
         href={project.url}
         target="_blank"
         rel="noopener noreferrer"
@@ -132,8 +121,8 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             <Preview project={project} />
           )}
         </div>
-      </motion.a>
-    </motion.article>
+      </a>
+    </article>
   );
 };
 

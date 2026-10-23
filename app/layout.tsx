@@ -19,14 +19,25 @@ export const metadata: Metadata = {
     "Portfolio de Peuraud Pierre, développeur Full-Stack diplômé de Zone01 Rouen Normandie, ex-Lead Developer chez Eurekafripe.",
 };
 
+// Apparitions au scroll pilotées par ces deux petits scripts intégrés au HTML : elles ne
+// dépendent pas du chargement du JS de la page, qui peut prendre plusieurs secondes en 4G.
+// Le premier, dans <head>, signale que le JS est actif (sans JS, tout reste simplement visible).
+const REVEAL_FLAG = `document.documentElement.setAttribute("data-js","")`;
+// Le second marque chaque élément [data-reveal…] dès qu'il entre dans l'écran.
+const REVEAL_OBSERVER = `(()=>{
+  const io=new IntersectionObserver((entries)=>{for(const e of entries)if(e.isIntersecting){e.target.setAttribute("data-in","");io.unobserve(e.target)}},{rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll("[data-reveal],[data-reveal-split],[data-reveal-draw]").forEach((el)=>io.observe(el));
+})()`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="dark scroll-smooth">
+    <html lang="fr" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: REVEAL_FLAG }} />
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
         {/* Cabinet Grotesk (Fontshare, licence gratuite) pour les gros titres */}
@@ -45,6 +56,7 @@ export default function RootLayout({
         )}
       >
         {children}
+        <script dangerouslySetInnerHTML={{ __html: REVEAL_OBSERVER }} />
       </body>
     </html>
   );
