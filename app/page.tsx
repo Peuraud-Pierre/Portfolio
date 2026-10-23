@@ -1,24 +1,23 @@
-import { Header } from "./_components/Header";
-import { Hero } from "./_components/Hero";
-import { Spacing } from "./_components/Spacing";
-import { Status } from "./_components/Status";
-import { Skills } from "./_components/Skills";
-import { Contact } from "./_components/Contacct";
-import { Footer } from "./_components/Footer";
+import { SiteHeader } from "./_components/SiteHeader";
+import { HeroSection } from "./_components/HeroSection";
+import { AboutSection } from "./_components/AboutSection";
+import { MarqueeSection } from "./_components/MarqueeSection";
+import { ProjectsSection } from "./_components/ProjectsSection";
+import { ContactSection } from "./_components/ContactSection";
+import { SiteFooter } from "./_components/SiteFooter";
+
 export default function Home() {
   return (
-    <main>
-      <Header />
-      <Spacing size="md" />
-      <Hero />
-      <Spacing size="md" />
-      <Status />
-      <Spacing size="md" />
-      <Skills />
-      <Spacing size="md" />
-      <Contact />
-      <Spacing size="md" />
-      <Footer />
-    </main>
+    <>
+      <SiteHeader />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <MarqueeSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

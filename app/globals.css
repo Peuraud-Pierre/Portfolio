@@ -2,8 +2,8 @@
 
 /* Variables CSS globales */
 :root {
-  --background: hsl(216 13% 15%);
-  --foreground: hsl(219 18% 71%);
+  --background: hsl(0 0% 0%);
+  --foreground: hsl(30 14% 90%);
   --muted: hsl(216 12% 19%);
   --muted-foreground: hsl(216 12% 69%);
   --popover: hsl(216 13% 12%);
@@ -54,6 +54,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-sub: var(--font-josefin), sans-serif;
+  --font-pop: var(--font-poppins), sans-serif;
+  --font-display: "Cabinet Grotesk", var(--font-geist-sans), sans-serif;
+  --color-pinkish: #ffb6c1;
+  --color-bone: #eae6e1;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -87,4 +92,108 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ---------- Effets du thème "Echo" ---------- */
+
+/* Dégradé blanc → rose du titre principal, avec un reflet qui passe une fois */
+.text-shine {
+  background-image: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #ffe4ec 30%,
+    #ffb6c1 55%,
+    #ffffff 62%,
+    #ffb6c1 70%,
+    #a3a3a3 100%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+@keyframes shine {
+  to {
+    background-position: 0% 0;
+  }
+}
+
+/* Pastille "verre" utilisée par le header */
+.glass-pill {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: border-color 0.3s, background 0.3s, transform 0.2s;
+}
+.glass-pill:hover {
+  border-color: rgba(255, 182, 193, 0.7);
+  background: rgba(20, 20, 20, 0.6);
+}
+
+/* Grille de points en fond de la section "À propos" */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1.4px, transparent 1.6px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 60% 55% at 15% 45%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 55% at 15% 45%, #000 30%, transparent 75%);
+}
+
+/* Bordure lumineuse des cartes projets */
+.project-card {
+  background:
+    radial-gradient(60% 50% at 0% 0%, rgba(34, 211, 238, 0.07), transparent 70%),
+    radial-gradient(45% 45% at 100% 100%, rgba(244, 63, 94, 0.09), transparent 70%),
+    #0b0b0c;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 30px 80px -40px rgba(0, 0, 0, 0.9);
+}
+
+/* Aperçu du projet Vinyl */
+.vinyl-disc {
+  background:
+    repeating-radial-gradient(circle at center, #111 0 1px, #1c1c1f 1.5px 3px),
+    #151517;
+  animation: vinyl-spin 1.8s linear infinite;
+}
+@keyframes vinyl-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.vinyl-arm {
+  transform: rotate(18deg);
+  animation: vinyl-arm-drop 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes vinyl-arm-drop {
+  from {
+    transform: rotate(-6deg);
+  }
+}
+.vinyl-eq {
+  height: 6px;
+  animation: vinyl-eq 0.9s ease-in-out infinite alternate;
+}
+@keyframes vinyl-eq {
+  to {
+    height: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vinyl-disc,
+  .vinyl-arm,
+  .vinyl-eq {
+    animation: none;
+  }
+
+  .text-shine {
+    animation: none;
+  }
+  .text-shine {
+    background-position: 0% 0;
+  }
 }
